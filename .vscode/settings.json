@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "autoprime",
+        "njsproj",
+        "ntvs",
+        "prototipo",
+        "tanstack"
+    ],
+    "files.associations": {
+        "*.css": "tailwindcss"
+    }
+}
