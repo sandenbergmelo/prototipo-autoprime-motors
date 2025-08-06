@@ -28,12 +28,16 @@ export default function TwoFAPage() {
       setError('Código inválido.')
       return
     }
-    // Lógica de verificação do código
     window.location.href = '/'
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <div
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        background: 'linear-gradient(135deg, #2563eb 0%, #60a5fa 100%)',
+      }}
+    >
       <div className="flex flex-col items-center gap-6 bg-card p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center">Verificação em 2 Fatores</h2>
         <p className="text-center text-muted-foreground mb-2">
