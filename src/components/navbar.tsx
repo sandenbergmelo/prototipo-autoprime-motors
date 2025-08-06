@@ -1,5 +1,12 @@
 /* eslint-disable @stylistic/max-len */
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +22,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Link } from '@tanstack/react-router'
-import { Car, Menu } from 'lucide-react'
+import { Car, Menu, User } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
@@ -103,9 +110,22 @@ export function Navbar() {
                 )
               : (
                 <SheetClose asChild>
-                  <Button className="w-full cursor-pointer" onClick={handleLogout}>
-                    Sair
-                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="w-full flex items-center justify-center gap-2 cursor-pointer">
+                        <User className="w-5 h-5" />
+                        <span>Menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-48">
+                      <DropdownMenuItem asChild>
+                        <Link to="/orders">Minhas compras</Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleLogout}>
+                        Sair
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </SheetClose>
                 )}
           </div>
@@ -222,9 +242,24 @@ export function Navbar() {
             </>
             )
           : (
-            <Button className="cursor-pointer bg-red-700 font-bold hover:bg-gray-500" onClick={handleLogout}>
-              Sair
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="cursor-pointer">
+                  <AvatarImage src="" alt="Usuário" />
+                  <AvatarFallback>
+                    <User className="w-5 h-5" />
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link to="/orders">Minhas compras</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                  Sair
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             )}
       </div>
     </header>
