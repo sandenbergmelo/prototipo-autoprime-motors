@@ -11,18 +11,18 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import type { MouseEvent } from 'react'
+import type { FormEvent } from 'react'
 
 export const Route = createFileRoute('/login')({
   component: LoginPage,
 })
 
-function entrar(e: MouseEvent<HTMLButtonElement>) {
-  e.preventDefault()
-  window.location.href = '/two-fa'
-}
-
 function LoginPage() {
+  function entrar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    window.location.href = '/two-fa'
+  }
+
   return (
     <div
       className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
@@ -37,36 +37,47 @@ function LoginPage() {
             Informe seu e-mail e senha para acessar sua conta
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
-            <Input id="email" type="email" placeholder="exemplo@email.com" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
-            <Input id="password" type="password" required />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <input id="remember" type="checkbox" className="h-4 w-4 rounded border-gray-300" />
-              <Label htmlFor="remember" className="text-sm cursor-pointer">
-                Lembrar de mim
-              </Label>
+        <form onSubmit={entrar}>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">E-mail</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="exemplo@email.com"
+                required
+              />
             </div>
-            <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
-              Esqueceu a senha?
-            </Link>
-          </div>
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button className="w-full dark:text-white cursor-pointer" onClick={entrar}>Entrar</Button>
-          <div className="text-center text-sm dark:text-gray-200">
-            {'Não tem uma conta? '}
-            <Link to="/signup" className="text-blue hover:text-blue-500 font-medium">
-              Cadastre-se
-            </Link>
-          </div>
-        </CardFooter>
+            <div className="space-y-2">
+              <Label htmlFor="password">Senha</Label>
+              <Input
+                id="password"
+                type="password"
+                required
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <input id="remember" type="checkbox" className="h-4 w-4 rounded border-gray-300" />
+                <Label htmlFor="remember" className="text-sm cursor-pointer">
+                  Lembrar de mim
+                </Label>
+              </div>
+              <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
+                Esqueceu a senha?
+              </Link>
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-4 mt-4">
+            <Button type="submit" className="w-full dark:text-white cursor-pointer">Entrar</Button>
+            <div className="text-center text-sm dark:text-gray-200">
+              {'Não tem uma conta? '}
+              <Link to="/signup" className="text-blue hover:text-blue-500 font-medium">
+                Cadastre-se
+              </Link>
+            </div>
+          </CardFooter>
+        </form>
       </Card>
     </div>
   )

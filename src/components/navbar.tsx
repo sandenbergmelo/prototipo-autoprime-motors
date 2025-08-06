@@ -16,9 +16,22 @@ import {
 } from '@/components/ui/sheet'
 import { Link } from '@tanstack/react-router'
 import { Car, Menu } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
 export function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true')
+  }, [])
+
+  function handleLogout() {
+    localStorage.removeItem('isLoggedIn')
+    setIsLoggedIn(false)
+    window.location.href = '/'
+  }
+
   return (
     <header className="flex h-16 w-full shrink-0 items-center px-4 md:px-6 border-b bg-background">
       {/* Mobile Menu */}
@@ -69,20 +82,32 @@ export function Navbar() {
             </SheetClose>
           </div>
           <div className="flex flex-col gap-2 mt-6">
-            <SheetClose asChild>
-              <Link to="/login">
-                <Button variant="outline" className="w-full cursor-pointer">
-                  Login
-                </Button>
-              </Link>
-            </SheetClose>
-            <SheetClose asChild>
-              <Link to="/signup">
-                <Button className="w-full text-white cursor-pointer">
-                  Cadastre-se
-                </Button>
-              </Link>
-            </SheetClose>
+            {!isLoggedIn
+              ? (
+                <>
+                  <SheetClose asChild>
+                    <Link to="/login">
+                      <Button variant="outline" className="w-full cursor-pointer">
+                        Login
+                      </Button>
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link to="/signup">
+                      <Button className="w-full text-white cursor-pointer">
+                        Cadastre-se
+                      </Button>
+                    </Link>
+                  </SheetClose>
+                </>
+                )
+              : (
+                <SheetClose asChild>
+                  <Button className="w-full cursor-pointer" onClick={handleLogout}>
+                    Sair
+                  </Button>
+                </SheetClose>
+                )}
           </div>
         </SheetContent>
       </Sheet>
@@ -181,16 +206,26 @@ export function Navbar() {
       {/* Auth Buttons */}
       <div className="ml-auto flex items-center gap-2">
         <ThemeToggle />
-        <Link to="/login">
-          <Button variant="outline" className="hidden sm:inline-flex cursor-pointer">
-            Login
-          </Button>
-        </Link>
-        <Link to="/signup">
-          <Button className="text-white cursor-pointer">
-            Cadastre-se
-          </Button>
-        </Link>
+        {!isLoggedIn
+          ? (
+            <>
+              <Link to="/login">
+                <Button variant="outline" className="hidden sm:inline-flex cursor-pointer">
+                  Login
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button className="text-white cursor-pointer">
+                  Cadastre-se
+                </Button>
+              </Link>
+            </>
+            )
+          : (
+            <Button className="cursor-pointer bg-red-700 font-bold hover:bg-gray-500" onClick={handleLogout}>
+              Sair
+            </Button>
+            )}
       </div>
     </header>
   )

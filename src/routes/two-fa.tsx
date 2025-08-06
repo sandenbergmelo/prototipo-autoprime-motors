@@ -7,7 +7,8 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, type MouseEvent } from 'react'
+import { REGEXP_ONLY_DIGITS } from 'input-otp'
+import { useState, type FormEvent } from 'react'
 
 export const Route = createFileRoute('/two-fa')({
   component: RouteComponent,
@@ -21,13 +22,16 @@ export default function TwoFAPage() {
   const [otp, setOtp] = useState('')
   const [error, setError] = useState('')
 
-  function handleConfirm(e: MouseEvent<HTMLButtonElement>) {
+  function handleConfirm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
+
     if (otp.length !== 6) {
       setError('Código inválido.')
       return
     }
+
+    localStorage.setItem('isLoggedIn', 'true')
     window.location.href = '/'
   }
 
@@ -38,7 +42,10 @@ export default function TwoFAPage() {
         background: 'linear-gradient(135deg, #2563eb 0%, #60a5fa 100%)',
       }}
     >
-      <div className="flex flex-col items-center gap-6 bg-card p-8 rounded-lg shadow-md">
+      <form
+        className="flex flex-col items-center gap-6 bg-card p-8 rounded-lg shadow-md"
+        onSubmit={handleConfirm}
+      >
         <h2 className="text-2xl font-bold text-center">Verificação em 2 Fatores</h2>
         <p className="text-center text-muted-foreground mb-2">
           Digite o código enviado para seu e-mail
@@ -47,6 +54,7 @@ export default function TwoFAPage() {
           maxLength={6}
           value={otp}
           onChange={setOtp}
+          pattern={REGEXP_ONLY_DIGITS}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -63,10 +71,10 @@ export default function TwoFAPage() {
         {error && (
           <div className="text-red-500 text-sm text-center">{error}</div>
         )}
-        <Button className="w-full mt-2 dark:text-white cursor-pointer" onClick={handleConfirm}>
+        <Button type="submit" className="w-full mt-2 dark:text-white cursor-pointer">
           Confirmar
         </Button>
-      </div>
+      </form>
     </div>
   )
 }
