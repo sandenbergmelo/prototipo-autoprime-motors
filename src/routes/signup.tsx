@@ -36,8 +36,7 @@ export default function SignupPage() {
       setError('As senhas não coincidem.')
       return
     }
-    // Aqui você pode adicionar lógica para enviar os dados para o backend
-    window.location.href = '/'
+    window.location.href = '/two-fa'
   }
 
   return (

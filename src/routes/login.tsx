@@ -19,7 +19,7 @@ export const Route = createFileRoute('/login')({
 
 function entrar(e: MouseEvent<HTMLButtonElement>) {
   e.preventDefault()
-  window.location.href = '/'
+  window.location.href = '/two-fa'
 }
 
 function LoginPage() {
