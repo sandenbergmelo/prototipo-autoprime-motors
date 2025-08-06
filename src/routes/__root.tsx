@@ -6,7 +6,6 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <Navbar />
-      <hr className="border-zinc-200 dark:border-zinc-800" />
       <Outlet />
       <TanStackRouterDevtools />
     </>
