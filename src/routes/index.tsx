@@ -1,13 +1,20 @@
+import { ContactSection } from '@/components/contact-section'
+import { FeaturedVehicles } from '@/components/featured-vehicles'
+import { HeroSection } from '@/components/hero-section'
+import { TestimonialsSection } from '@/components/testimonials-section'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
-  component: Index,
+  component: Home,
 })
 
-function Index() {
+function Home() {
   return (
-    <div className="p-2">
-      <h3>Welcome Home!</h3>
-    </div>
+    <main>
+      <HeroSection />
+      <FeaturedVehicles />
+      <TestimonialsSection />
+      <ContactSection />
+    </main>
   )
 }
