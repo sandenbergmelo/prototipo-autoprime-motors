@@ -2,6 +2,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { Link } from '@tanstack/react-router'
 import { Eye, Heart } from 'lucide-react'
 import type { MouseEvent } from 'react'
 
@@ -83,10 +84,10 @@ export function FeaturedVehicles() {
                   </Badge>
                 </div>
                 <div className="absolute top-2 right-2 flex space-x-1">
-                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800">
+                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800 cursor-pointer">
                     <Heart className="h-4 w-4 text-gray-700 dark:text-zinc-200" />
                   </Button>
-                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800">
+                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white dark:bg-zinc-800/80 dark:hover:bg-zinc-800 cursor-pointer">
                     <Eye className="h-4 w-4 text-gray-700 dark:text-zinc-200" />
                   </Button>
                 </div>
@@ -114,10 +115,16 @@ export function FeaturedVehicles() {
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-800 dark:hover:bg-blue-900">
-                    Ver detalhes
-                  </Button>
-                  <Button variant="outline" className="flex-1 text-gray-700 dark:text-zinc-200 dark:border-zinc-700">
+                  <Link
+                    to="/car/$carId"
+                    params={{ carId: String(vehicle.id) }}
+                    className="flex-1"
+                  >
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-800 dark:hover:bg-blue-900 cursor-pointer">
+                      Ver detalhes
+                    </Button>
+                  </Link>
+                  <Button variant="outline" className="flex-1 text-gray-700 dark:text-zinc-200 dark:border-zinc-700 cursor-pointer">
                     Contato
                   </Button>
                 </div>

@@ -9,11 +9,9 @@ import {
 } from '@/components/ui/dropdown-menu'
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import {
   Sheet,
@@ -73,17 +71,17 @@ export function Navbar() {
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="." className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Serviços
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="." className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Financiamento
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="." className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Contato
               </Link>
             </SheetClose>
@@ -119,7 +117,9 @@ export function Navbar() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-48">
                       <DropdownMenuItem asChild>
-                        <Link to="/orders">Minhas compras</Link>
+                        <Link to="/proposals" className="cursor-pointer">
+                          Minhas propostas
+                        </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={handleLogout}>
                         Sair
@@ -162,38 +162,19 @@ export function Navbar() {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Estoque</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[300px] p-2">
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="#"
-                    className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-accent"
-                  >
-                    <div className="text-sm font-medium leading-none group-hover:underline">Novos</div>
-                    <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Veja nossa coleção de veículos novos
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="#"
-                    className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-accent"
-                  >
-                    <div className="text-sm font-medium leading-none group-hover:underline">Seminovos</div>
-                    <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Veículos seminovos com garantia
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-              </div>
-            </NavigationMenuContent>
+            <NavigationMenuLink asChild>
+              <Link
+                to="/inventory"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                Estoque
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="#"
+                to="."
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Serviços
@@ -203,7 +184,7 @@ export function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="#"
+                to="."
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Financiamento
@@ -213,7 +194,7 @@ export function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="#"
+                to="."
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Contato

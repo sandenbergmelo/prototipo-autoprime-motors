@@ -1,5 +1,9 @@
 /* eslint-disable @stylistic/max-len */
-import { createFileRoute } from '@tanstack/react-router'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { Eye, Heart } from 'lucide-react'
 
 const vehicles = [
   {
@@ -48,11 +52,6 @@ const vehicles = [
   },
 ]
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Eye, Heart } from 'lucide-react'
-
 export const Route = createFileRoute('/inventory')({
   component: RouteComponent,
 })
@@ -83,10 +82,10 @@ function RouteComponent() {
                   </Badge>
                 </div>
                 <div className="absolute top-2 right-2 flex space-x-1">
-                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white">
+                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white cursor-pointer">
                     <Heart className="h-4 w-4" />
                   </Button>
-                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white">
+                  <Button size="icon" variant="ghost" className="h-8 w-8 bg-white/80 hover:bg-white cursor-pointer">
                     <Eye className="h-4 w-4" />
                   </Button>
                 </div>
@@ -114,10 +113,16 @@ function RouteComponent() {
                 </div>
 
                 <div className="flex space-x-2">
-                  <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
-                    Ver detalhes
-                  </Button>
-                  <Button variant="outline" className="flex-1">
+                  <Link
+                    to="/car/$carId"
+                    params={{ carId: String(vehicle.id) }}
+                    className="flex-1"
+                  >
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">
+                      Ver detalhes
+                    </Button>
+                  </Link>
+                  <Button variant="outline" className="flex-1 cursor-pointer">
                     Contato
                   </Button>
                 </div>

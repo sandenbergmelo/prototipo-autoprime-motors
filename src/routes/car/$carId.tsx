@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 
 const vehicles = [
   {
@@ -99,6 +99,10 @@ function RouteComponent() {
   const [cpf, setCpf] = useState('')
   const [showOptions, setShowOptions] = useState(false)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
 
   if (!car) {
     return <div className="text-center py-20 text-2xl dark:text-zinc-100">Veículo não encontrado.</div>
