@@ -234,7 +234,7 @@ export function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link to="/orders">Minhas compras</Link>
+                  <Link to="/proposals">Minhas propostas</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                   Sair

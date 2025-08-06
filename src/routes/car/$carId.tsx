@@ -2,6 +2,8 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState, type FormEvent } from 'react'
 
@@ -99,10 +101,11 @@ function RouteComponent() {
   const [cpf, setCpf] = useState('')
   const [showOptions, setShowOptions] = useState(false)
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  }, [])
 
   if (!car) {
     return <div className="text-center py-20 text-2xl dark:text-zinc-100">Veículo não encontrado.</div>
@@ -126,8 +129,18 @@ function RouteComponent() {
     setShowOptions(true)
   }
 
-  function handleContinueProposal() {
-    alert('Proposta enviada!\n\nSua proposta de financiamento foi enviada para a sua dashboard. Você poderá acompanhar o andamento por lá.')
+  function handleFinalizeProposal() {
+    setIsSubmitting(true)
+    setTimeout(() => {
+      alert(
+        'Proposta registrada!\n\nSua proposta foi registrada com validade de 48h. Você poderá acompanhar o status por e-mail.',
+      )
+      setIsSubmitting(false)
+      setShowOptions(false)
+      setShowFinance(false)
+      window.location.href = '/proposals'
+      window.scrollTo(0, 0)
+    }, 800)
   }
 
   return (
@@ -166,20 +179,19 @@ function RouteComponent() {
               <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-zinc-100">Simule seu financiamento</h2>
               <form onSubmit={handleFinance} className="space-y-4">
                 <div>
-                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="downPayment">Valor de entrada (R$)</label>
-                  <input
+                  <Label htmlFor="downPayment">Valor de entrada (R$)</Label>
+                  <Input
                     id="downPayment"
                     type="number"
                     min={0}
                     max={car.price}
-                    className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
                     placeholder="Ex: 10.000"
                     value={downPayment}
                     onChange={e => setDownPayment(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="months">Número de parcelas</label>
+                  <Label htmlFor="months">Número de parcelas</Label>
                   <select
                     id="months"
                     className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
@@ -194,11 +206,10 @@ function RouteComponent() {
                   </select>
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="cpf">CPF</label>
-                  <input
+                  <Label htmlFor="cpf">CPF</Label>
+                  <Input
                     id="cpf"
                     type="text"
-                    className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
                     placeholder="000.000.000-00"
                     value={cpf}
                     onChange={e => setCpf(maskCpf(e.target.value))}
@@ -235,9 +246,10 @@ function RouteComponent() {
                     <Button
                       className="bg-green-600 hover:bg-green-700 dark:bg-green-800 dark:hover:bg-green-900 mt-2 md:mt-0 cursor-pointer dark:text-white"
                       type="button"
-                      onClick={handleContinueProposal}
+                      disabled={isSubmitting}
+                      onClick={() => handleFinalizeProposal()}
                     >
-                      Continuar com esta proposta
+                      Fazer proposta
                     </Button>
                   </div>
                 ))}
