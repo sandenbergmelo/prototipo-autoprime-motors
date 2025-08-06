@@ -101,7 +101,7 @@ function RouteComponent() {
   const [error, setError] = useState('')
 
   if (!car) {
-    return <div className="text-center py-20 text-2xl">Veículo não encontrado.</div>
+    return <div className="text-center py-20 text-2xl dark:text-zinc-100">Veículo não encontrado.</div>
   }
 
   function handleFinance(e: FormEvent) {
@@ -127,7 +127,7 @@ function RouteComponent() {
   }
 
   return (
-    <section className="py-12 bg-white min-h-screen">
+    <section className="py-12 bg-white dark:bg-zinc-900 min-h-screen">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="flex-1">
@@ -138,47 +138,47 @@ function RouteComponent() {
             />
           </div>
           <div className="flex-1 flex flex-col gap-4">
-            <h1 className="text-3xl font-bold text-gray-900">{car.year} {car.make} {car.model}</h1>
-            <Badge variant="secondary" className="bg-green-100 text-green-800 w-fit">{car.condition}</Badge>
-            <span className="text-2xl font-bold text-blue-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100">{car.year} {car.make} {car.model}</h1>
+            <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 w-fit">{car.condition}</Badge>
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               R$ {car.price.toLocaleString('pt-BR')}
             </span>
-            <span className="text-gray-600">{car.mileage.toLocaleString('pt-BR')} km</span>
+            <span className="text-gray-600 dark:text-zinc-300">{car.mileage.toLocaleString('pt-BR')} km</span>
             <div className="flex flex-wrap gap-2">
               {car.features.map((f, i) => (
-                <Badge key={i} variant="outline" className="text-xs">{f}</Badge>
+                <Badge key={i} variant="outline" className="text-xs dark:border-zinc-700 dark:text-zinc-200">{f}</Badge>
               ))}
             </div>
-            <p className="text-gray-700">{car.description}</p>
-            <Button className="bg-blue-600 hover:bg-blue-700 w-fit cursor-pointer" onClick={() => setShowFinance(true)}>
+            <p className="text-gray-700 dark:text-zinc-200">{car.description}</p>
+            <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-900 w-fit cursor-pointer dark:text-white" onClick={() => setShowFinance(true)}>
               Simular Financiamento
             </Button>
           </div>
         </div>
 
         {showFinance && (
-          <Card className="mt-10 max-w-xl mx-auto">
+          <Card className="mt-10 max-w-xl mx-auto bg-white dark:bg-zinc-950">
             <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">Simule seu financiamento</h2>
+              <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-zinc-100">Simule seu financiamento</h2>
               <form onSubmit={handleFinance} className="space-y-4">
                 <div>
-                  <label className="block mb-1 font-medium" htmlFor="downPayment">Valor de entrada (R$)</label>
+                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="downPayment">Valor de entrada (R$)</label>
                   <input
                     id="downPayment"
                     type="number"
                     min={0}
                     max={car.price}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
                     placeholder="Ex: 10.000"
                     value={downPayment}
                     onChange={e => setDownPayment(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium" htmlFor="months">Número de parcelas</label>
+                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="months">Número de parcelas</label>
                   <select
                     id="months"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
                     value={months}
                     onChange={e => setMonths(e.target.value)}
                   >
@@ -190,46 +190,46 @@ function RouteComponent() {
                   </select>
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium" htmlFor="cpf">CPF</label>
+                  <label className="block mb-1 font-medium text-gray-900 dark:text-zinc-100" htmlFor="cpf">CPF</label>
                   <input
                     id="cpf"
                     type="text"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100 border-gray-300 dark:border-zinc-700"
                     placeholder="000.000.000-00"
                     value={cpf}
                     onChange={e => setCpf(maskCpf(e.target.value))}
                     maxLength={14}
                   />
                 </div>
-                {error && <div className="text-red-500 text-sm">{error}</div>}
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer">Ver opções</Button>
+                {error && <div className="text-red-500 dark:text-red-400 text-sm">{error}</div>}
+                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-900 cursor-pointer dark:text-white">Ver opções</Button>
               </form>
             </CardContent>
           </Card>
         )}
 
         {showOptions && (
-          <Card className="mt-8 max-w-xl mx-auto">
+          <Card className="mt-8 max-w-xl mx-auto bg-white dark:bg-zinc-950">
             <CardContent className="p-6">
-              <h3 className="text-lg font-bold mb-4">Opções de financiamento</h3>
+              <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-zinc-100">Opções de financiamento</h3>
               <div className="space-y-4">
                 {simulateInstallments(car.price, Number(downPayment), Number(months)).map((option, i) => (
-                  <div key={i} className="border rounded p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                  <div key={i} className="border rounded p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2 border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
                     <div>
-                      <span className="font-semibold">{option.partner}</span>
-                      <span className="ml-2 text-sm text-gray-500">{option.rate}</span>
+                      <span className="font-semibold text-gray-900 dark:text-zinc-100">{option.partner}</span>
+                      <span className="ml-2 text-sm text-gray-500 dark:text-zinc-400">{option.rate}</span>
                     </div>
                     <div>
-                      <span className="font-medium">Parcela: </span>
-                      <span className="text-blue-600 font-bold">{option.installment}</span>
-                      <span className="ml-2 text-sm text-gray-500">({option.months}x)</span>
+                      <span className="font-medium text-gray-900 dark:text-zinc-100">Parcela: </span>
+                      <span className="text-blue-600 dark:text-blue-400 font-bold">{option.installment}</span>
+                      <span className="ml-2 text-sm text-gray-500 dark:text-zinc-400">({option.months}x)</span>
                     </div>
                     <div>
-                      <span className="font-medium">Total: </span>
-                      <span className="text-gray-800">{option.total}</span>
+                      <span className="font-medium text-gray-900 dark:text-zinc-100">Total: </span>
+                      <span className="text-gray-800 dark:text-zinc-200">{option.total}</span>
                     </div>
                     <Button
-                      className="bg-green-600 hover:bg-green-700 mt-2 md:mt-0 cursor-pointer"
+                      className="bg-green-600 hover:bg-green-700 dark:bg-green-800 dark:hover:bg-green-900 mt-2 md:mt-0 cursor-pointer dark:text-white"
                       type="button"
                       onClick={handleContinueProposal}
                     >
