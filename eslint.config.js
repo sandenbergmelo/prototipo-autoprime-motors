@@ -1,4 +1,5 @@
 import baseConfig from '@rocketseat/eslint-config/react.mjs'
+import pluginRouter from '@tanstack/eslint-plugin-router'
 import importNewLines from 'eslint-plugin-import-newlines'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig } from 'eslint/config'
@@ -10,6 +11,7 @@ export default defineConfig(
     extends: [
       ...baseConfig,
       reactRefresh.configs.vite,
+      ...pluginRouter.configs['flat/recommended'],
     ],
     plugins: {
       'import-newlines': importNewLines,
