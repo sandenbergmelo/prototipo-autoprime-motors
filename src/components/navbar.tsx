@@ -73,17 +73,17 @@ export function Navbar() {
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="/services" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Serviços
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="/financing" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Financiamento
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link to="/contact" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
+              <Link to="#" className="flex w-full items-center py-2 text-lg font-medium text-foreground hover:text-foreground">
                 Contato
               </Link>
             </SheetClose>
@@ -167,7 +167,7 @@ export function Navbar() {
               <div className="grid w-[300px] p-2">
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/inventory/new"
+                    to="#"
                     className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-accent"
                   >
                     <div className="text-sm font-medium leading-none group-hover:underline">Novos</div>
@@ -178,7 +178,7 @@ export function Navbar() {
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/inventory/used"
+                    to="#"
                     className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-accent"
                   >
                     <div className="text-sm font-medium leading-none group-hover:underline">Seminovos</div>
@@ -193,7 +193,7 @@ export function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="/services"
+                to="#"
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Serviços
@@ -203,7 +203,7 @@ export function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="/financing"
+                to="#"
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Financiamento
@@ -213,7 +213,7 @@ export function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="/contact"
+                to="#"
                 className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Contato

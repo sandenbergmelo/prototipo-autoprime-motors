@@ -1,9 +1,5 @@
 /* eslint-disable @stylistic/max-len */
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Eye, Heart } from 'lucide-react'
-import type { MouseEvent } from 'react'
+import { createFileRoute } from '@tanstack/react-router'
 
 const vehicles = [
   {
@@ -52,19 +48,23 @@ const vehicles = [
   },
 ]
 
-function handle(e: MouseEvent<HTMLButtonElement>) {
-  e.preventDefault()
-  window.location.href = '/inventory'
-}
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Eye, Heart } from 'lucide-react'
 
-export function FeaturedVehicles() {
+export const Route = createFileRoute('/inventory')({
+  component: RouteComponent,
+})
+
+function RouteComponent() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Veículos em destaque</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Todos os veículos</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Descubra nossa seleção especial de veículos de qualidade, todos revisados e prontos para rodar.
+            Veja todos os veículos disponíveis em nosso estoque.
           </p>
         </div>
 
@@ -124,12 +124,6 @@ export function FeaturedVehicles() {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center">
-          <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer" onClick={handle}>
-            Ver todo o estoque
-          </Button>
         </div>
       </div>
     </section>

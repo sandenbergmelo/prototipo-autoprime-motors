@@ -1,5 +1,5 @@
 /* eslint-disable @stylistic/max-len */
-import { Car, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
+import { Car, Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -9,10 +9,10 @@ export function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Car className="h-8 w-8 text-blue-400" />
-              <span className="text-2xl font-bold">AutoMax</span>
+              <span className="text-2xl font-bold">AutoPrime Motors</span>
             </div>
             <p className="text-gray-400 mb-4">
-              Your trusted partner for quality vehicles and exceptional automotive services since 1995.
+              Seu parceiro de confiança para veículos de qualidade e serviços automotivos excepcionais desde 2013.
             </p>
             <div className="flex space-x-4">
               <Facebook className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
@@ -23,40 +23,38 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">Links rápidos</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">New Vehicles</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Pre-Owned</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Certified Pre-Owned</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Trade-In Value</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Financing</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Veículos novos</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Seminovos</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Certificados</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Avaliação do usado</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Financiamento</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">Service Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Parts Department</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Body Shop</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Warranty</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Roadside Assistance</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Centro de Serviços</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Garantia</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Assistência 24h</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-400">
-              <p>123 Auto Street</p>
-              <p>Austin, TX 78701</p>
-              <p>Phone: (555) 123-4567</p>
-              <p>Email: info@automax.com</p>
+              <p>Rua Auto, 123</p>
+              <p>Fortaleza, CE 60000-000</p>
+              <p>Telefone: (85) 1234-5678</p>
+              <p>E-mail: vendas@autoprime.com.br</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 AutoMax. All rights reserved. | Privacy Policy | Terms of Service</p>
+          <p>&copy; 2025 AutoPrime Motors. Todos os direitos reservados. | Política de Privacidade | Termos de Uso</p>
         </div>
       </div>
     </footer>
