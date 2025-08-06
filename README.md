@@ -1,69 +1,53 @@
-# React + TypeScript + Vite
+# Prototipo AutoPrime Motors
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém um protótipo desenvolvido como parte de um trabalho final para a disciplina de Análise e Projeto de Sistemas. O objetivo do projeto foi desenvolver um Documento de Requisitos completo e apresentação técnica baseada em um
+sistema realista, utilizando os conhecimentos aplicados durante a disciplina, esse protótipo é só uma parte do trabalho.
 
-Currently, two official plugins are available:
+## Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O **Protótipo AutoPrime Motors** consiste em uma aplicação web criada a partir dos requisitos fornecidos, simulando um sistema de uma concessionária (AutoPrime Motors). O foco está na interface e na experiência do usuário, não havendo integração real com backend ou banco de dados.
 
-## Expanding the ESLint configuration
+### Principais Características
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Protótipo funcional**: Interface construída para representar os fluxos principais definidos no documento de requisitos.
+- **100% Frontend**: Não há lógica de backend ou persistência de dados real.
+- **Tecnologias utilizadas**:
+  - [React](https://react.dev/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [Shadcn UI](https://ui.shadcn.com/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Tanstack Router](https://tanstack.com/router/latest)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Como Rodar
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/sandenbergmelo/prototipo-autoprime-motors.git
+   ```
+2. Instale as dependências (foi utilizado o [Bun](https://bun.sh/) como gerenciador de pacotes, mas você pode usar npm ou yarn):
+   ```bash
+   bun install
+   ```
+   ou, se preferir usar npm ou yarn:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Inicie o servidor de desenvolvimento:
+    ```bash
+    bun run dev
+    ```
+    ou, se estiver usando npm ou yarn:
+    ```bash
+    npm run dev
+    # ou
+    yarn dev
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Observações
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Este projeto tem caráter acadêmico e não está pronto para produção.
+- Todas as funcionalidades e telas foram criadas com base no documento de requisitos fornecido no trabalho.
+- Contribuições externas não são esperadas, mas fique à vontade para explorar o código.
