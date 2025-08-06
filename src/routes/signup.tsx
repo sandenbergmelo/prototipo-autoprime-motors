@@ -145,7 +145,7 @@ export default function SignupPage() {
               <div className="text-red-500 text-sm text-center mt-2">{error}</div>
             )}
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className="flex flex-col space-y-4 mt-4">
             <Button type="submit" className="w-full dark:text-white cursor-pointer">Cadastrar</Button>
             <div className="text-center text-sm dark:text-gray-200">
               {'Já tem uma conta? '}
